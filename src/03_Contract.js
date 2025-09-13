@@ -6,7 +6,7 @@ const provider = new ethers.JsonRpcProvider(process.env.ALCHEMY_SEPOLIA_URL);
 
 // WETH
 const abiWETH = configs.WETH_SEPOLIA_ABI;
-const addressWETH = configs.WETH_SEPOLIA_URL;
+const addressWETH = configs.WETH_SEPOLIA_ADDRESS;
 const contractWETH = new ethers.Contract(addressWETH, abiWETH, provider);
 
 // Human-Readable Abi, eg.DAI
@@ -16,7 +16,7 @@ const abiERC20 = [
   "function totalSupply() view returns (uint256)",
   "function balanceOf(address) view returns (uint)",
 ];
-const addressDAI = configs.DAI_SEPOLIA_URL;
+const addressDAI = configs.DAI_SEPOLIA_ADDRESS;
 const contractDAI = new ethers.Contract(addressDAI, abiERC20, provider);
 
 const main = async () => {
