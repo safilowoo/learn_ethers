@@ -1,12 +1,10 @@
+import "dotenv/config";
 import { ethers } from "ethers";
 
-const ALCHEMY_MAINNET_URL =
-  "https://eth-mainnet.g.alchemy.com/v2/PD8J-KQwITFuhVXTj1DKr";
-const ALCHEMY_SEPOLIA_URL =
-  "https://eth-sepolia.g.alchemy.com/v2/PD8J-KQwITFuhVXTj1DKr";
-
-const providerETH = new ethers.JsonRpcProvider(ALCHEMY_MAINNET_URL);
-const providerSepolia = new ethers.JsonRpcProvider(ALCHEMY_SEPOLIA_URL);
+const providerETH = new ethers.JsonRpcProvider(process.env.ALCHEMY_MAINNET_URL);
+const providerSepolia = new ethers.JsonRpcProvider(
+  process.env.ALCHEMY_SEPOLIA_URL
+);
 
 // console.log("1. 查询vitalik在主网和Sepolia测试网的ETH余额");
 // const balance = await providerETH.getBalance(`vitalik.eth`);

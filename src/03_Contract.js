@@ -1,9 +1,7 @@
+import "dotenv/config";
 import { ethers } from "ethers";
 
-const ALCHEMY_MAINNET_URL =
-  "https://eth-mainnet.g.alchemy.com/v2/PD8J-KQwITFuhVXTj1DKr";
-
-const provider = new ethers.JsonRpcProvider(ALCHEMY_MAINNET_URL);
+const provider = new ethers.JsonRpcProvider(process.env.ALCHEMY_MAINNET_URL);
 
 // WETH
 const abiWETH =

@@ -1,8 +1,7 @@
+import "dotenv/config";
 import { ethers } from "ethers";
 
-const ALCHEMY_SEPOLIA_URL =
-  "https://eth-sepolia.g.alchemy.com/v2/PD8J-KQwITFuhVXTj1DKr";
-const provider = new ethers.JsonRpcProvider(ALCHEMY_SEPOLIA_URL);
+const provider = new ethers.JsonRpcProvider(process.env.ALCHEMY_SEPOLIA_URL);
 
 // 创建随机的Wallet对象
 const wallet1 = ethers.Wallet.createRandom();
@@ -10,7 +9,7 @@ const wallet1WithProvider = wallet1.connect(provider);
 const mnemonic = wallet1.mnemonic;
 
 // 利用私钥和provider创建wallet对象
-const privateKey = "xxx";
+const privateKey = process.env.PRIVATE_KEY;
 const wallet2 = new ethers.Wallet(privateKey, provider);
 
 // 使用助记词创建wallet对象
