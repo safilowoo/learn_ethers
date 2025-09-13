@@ -1,9 +1,6 @@
 import "dotenv/config";
 import { ethers } from "ethers";
 
-const ALCHEMY_SEPOLIA_URL =
-  "https://eth-sepolia.g.alchemy.com/v2/PD8J-KQwITFuhVXTj1DKr";
-
 const provider = new ethers.JsonRpcProvider(process.env.ALCHEMY_SEPOLIA_URL);
 
 const main = async () => {
