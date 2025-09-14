@@ -1,12 +1,29 @@
 import "dotenv/config";
 import { ethers } from "ethers";
-import configs from "./configs.js";
+import ADDRESS from "./address.js";
 
 const provider = new ethers.JsonRpcProvider(process.env.ALCHEMY_SEPOLIA_URL);
 
 // WETH
-const abiWETH = configs.WETH_SEPOLIA_ABI;
-const addressWETH = configs.WETH_SEPOLIA_ADDRESS;
+const abiWETH = [
+  "event Approval(address indexed,address indexed,uint256)",
+  "event Deposit(address indexed,uint256)",
+  "event Transfer(address indexed,address indexed,uint256)",
+  "event Withdrawal(address indexed,uint256)",
+  "function allowance(address,address) view returns (uint256)",
+  "function approve(address,uint256) returns (bool)",
+  "function balanceOf(address) view returns (uint256)",
+  "function decimals() view returns (uint8)",
+  "function deposit() payable",
+  "function name() view returns (string)",
+  "function symbol() view returns (string)",
+  "function totalSupply() view returns (uint256)",
+  "function transfer(address,uint256) returns (bool)",
+  "function transferFrom(address,address,uint256) returns (bool)",
+  "function withdraw(uint256)",
+  "receive() payable",
+];
+const addressWETH = ADDRESS.WETH_SEPOLIA_ADDRESS;
 const contractWETH = new ethers.Contract(addressWETH, abiWETH, provider);
 
 // Human-Readable Abi, eg.DAI
@@ -16,7 +33,7 @@ const abiERC20 = [
   "function totalSupply() view returns (uint256)",
   "function balanceOf(address) view returns (uint)",
 ];
-const addressDAI = configs.DAI_SEPOLIA_ADDRESS;
+const addressDAI = ADDRESS.DAI_SEPOLIA_ADDRESS;
 const contractDAI = new ethers.Contract(addressDAI, abiERC20, provider);
 
 const main = async () => {

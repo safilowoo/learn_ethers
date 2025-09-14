@@ -1,13 +1,16 @@
 import "dotenv/config";
 import { ethers } from "ethers";
-import configs from "./configs.js";
+import ADDRESS from "./address.js";
 
 const provider = new ethers.JsonRpcProvider(process.env.ALCHEMY_MAINNET_URL);
-const addressUSDT = "0xdac17f958d2ee523a2206206994597c13d831ec7";
 const abiUSDT = [
   "event Transfer(address indexed from, address indexed to, uint value)",
 ];
-const contractUSDT = new ethers.Contract(addressUSDT, abiUSDT, provider);
+const contractUSDT = new ethers.Contract(
+  ADDRESS.USDT_MAINNET_ADDRESS,
+  abiUSDT,
+  provider
+);
 
 const main = async () => {
   try {

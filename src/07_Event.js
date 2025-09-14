@@ -1,6 +1,6 @@
 import "dotenv/config";
 import { ethers } from "ethers";
-import configs from "./configs.js";
+import ADDRESS from "./address.js";
 
 const provider = new ethers.JsonRpcProvider(process.env.ALCHEMY_SEPOLIA_URL);
 
@@ -8,7 +8,7 @@ const abiWETH = [
   "event Transfer(address indexed from, address indexed to, uint amount)",
 ];
 const contract = new ethers.Contract(
-  configs.WETH_SEPOLIA_ADDRESS,
+  ADDRESS.WETH_SEPOLIA_ADDRESS,
   abiWETH,
   provider
 );

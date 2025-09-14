@@ -1,6 +1,5 @@
 import "dotenv/config";
 import { ethers } from "ethers";
-import configs from "./configs.js";
 
 const provider = new ethers.JsonRpcProvider(process.env.ALCHEMY_SEPOLIA_URL);
 const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);

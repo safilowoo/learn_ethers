@@ -1,12 +1,30 @@
 import "dotenv/config";
 import { ethers } from "ethers";
-import configs from "./configs.js";
+import ADDRESS from "./address.js";
 
 const provider = new ethers.JsonRpcProvider(process.env.ALCHEMY_SEPOLIA_URL);
 const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
+const abiWETH = [
+  "event Approval(address indexed,address indexed,uint256)",
+  "event Deposit(address indexed,uint256)",
+  "event Transfer(address indexed,address indexed,uint256)",
+  "event Withdrawal(address indexed,uint256)",
+  "function allowance(address,address) view returns (uint256)",
+  "function approve(address,uint256) returns (bool)",
+  "function balanceOf(address) view returns (uint256)",
+  "function decimals() view returns (uint8)",
+  "function deposit() payable",
+  "function name() view returns (string)",
+  "function symbol() view returns (string)",
+  "function totalSupply() view returns (uint256)",
+  "function transfer(address,uint256) returns (bool)",
+  "function transferFrom(address,address,uint256) returns (bool)",
+  "function withdraw(uint256)",
+  "receive() payable",
+];
 const contractWETH = new ethers.Contract(
-  configs.WETH_SEPOLIA_ADDRESS,
-  configs.WETH_SEPOLIA_ABI,
+  ADDRESS.WETH_SEPOLIA_ADDRESS,
+  abiWETH,
   wallet
 );
 
